@@ -39,12 +39,9 @@ const RegistrationForm = () => {
 
   const handlePhoneNumberChange = (text) => {
     const formattedPhoneNumber = text.replace(/[^0-9]/g, '');
-
-    if (formattedPhoneNumber.length <= 10) {
-      setPhoneNumber(formattedPhoneNumber);
-      setPhoneNumberError(null);
-      setFormError(null);
-    }
+    setPhoneNumber(formattedPhoneNumber);
+    setPhoneNumberError(null);
+    setFormError(null);
   };
 
   const handleSubmit = () => {
@@ -62,8 +59,7 @@ const RegistrationForm = () => {
       firstNameValidationMessage === '' &&
       lastNameValidationMessage === '' &&
       emailValidationMessage === '' &&
-      phoneNumberValidationMessage === '' &&
-      phoneNumber.length === 10
+      phoneNumberValidationMessage === ''
     ) {
       setFormError(null);
       Alert.alert('Success', 'Form submitted successfully.');
@@ -72,27 +68,7 @@ const RegistrationForm = () => {
       setEmail('');
       setPhoneNumber('');
     } else {
-      let errorMessage = '';
-
-      if (phoneNumber === '') {
-        errorMessage = 'Phone Number is required.';
-        setPhoneNumberError(errorMessage);
-      } else if (phoneNumber.length !== 10) {
-        errorMessage = 'Phone Number must be exactly 10 digits.';
-        setPhoneNumberError(errorMessage);
-      }
-
-      if (errorMessage === '') {
-        if (firstNameValidationMessage !== '') {
-          errorMessage = firstNameValidationMessage;
-        } else if (lastNameValidationMessage !== '') {
-          errorMessage = lastNameValidationMessage;
-        } else if (emailValidationMessage !== '') {
-          errorMessage = emailValidationMessage;
-        }
-      }
-
-      setFormError(errorMessage);
+      setFormError('Please fill in the required fields correctly.');
     }
   };
 
@@ -150,7 +126,6 @@ const RegistrationForm = () => {
             value={phoneNumber}
             onChangeText={handlePhoneNumberChange}
             keyboardType="numeric"
-            maxLength={10}
           />
           {phoneNumberError && <Text style={styles.errorText}>{phoneNumberError}</Text>}
         </View>
