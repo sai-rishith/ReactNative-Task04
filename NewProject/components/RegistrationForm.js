@@ -112,31 +112,41 @@ const RegistrationForm = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Registration Form</Text>
       <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="First Name"
-          value={firstName}
-          onChangeText={handleFirstNameChange}
-        />
-        {firstNameError && <Text style={styles.errorText}>{firstNameError}</Text>}
-        <TextInput
-          style={styles.input}
-          placeholder="Last Name"
-          value={lastName}
-          onChangeText={handleLastNameChange}
-        />
-        {lastNameError && <Text style={styles.errorText}>{lastNameError}</Text>}
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={handleEmailChange}
-        />
-        {emailError && <Text style={styles.errorText}>{emailError}</Text>}
-        <View style={styles.phoneNumberContainer}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>First Name:</Text>
           <TextInput
             style={styles.input}
-            placeholder="Phone Number"
+            placeholder="Enter your first name"
+            value={firstName}
+            onChangeText={handleFirstNameChange}
+          />
+          {firstNameError && <Text style={styles.errorText}>{firstNameError}</Text>}
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Last Name:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your last name"
+            value={lastName}
+            onChangeText={handleLastNameChange}
+          />
+          {lastNameError && <Text style={styles.errorText}>{lastNameError}</Text>}
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Email:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your email"
+            value={email}
+            onChangeText={handleEmailChange}
+          />
+          {emailError && <Text style={styles.errorText}>{emailError}</Text>}
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Phone Number:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your phone number"
             value={phoneNumber}
             onChangeText={handlePhoneNumberChange}
             keyboardType="numeric"
@@ -157,6 +167,7 @@ const RegistrationForm = () => {
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
     container: {
       flexGrow: 1,

@@ -27,16 +27,12 @@ export const validateFirstName = (firstName) => {
   };
   
   export const validatePhoneNumber = (phoneNumber) => {
-    if (phoneNumber.trim() === '') {
-      return 'Phone number is required.';
+    if (phoneNumber === '') {
+      return 'Phone Number is required.';
+    } else if (phoneNumber.length !== 10) {
+      return 'Phone Number must be exactly 10 digits.';
     }
-  
-    // Phone number validation using regular expression
-    const phoneNumberPattern = /^\d{1,10}$/;
-    if (!phoneNumberPattern.test(phoneNumber)) {
-      return 'Invalid phone number format. Please enter only numbers (up to 10 digits).';
-    }
-  
     return '';
   };
+  
   
